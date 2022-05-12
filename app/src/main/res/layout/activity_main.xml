@@ -23,8 +23,8 @@
         android:layout_below="@+id/text"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        app:shape="square"
-        app:count="10"
+        app:shape="circle"
+        app:count="20"
         tools:ignore="MissingConstraints" />
 
     <Button

@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        findViewById<NPSRecyclerView>(R.id.nps_rv).setSelectedAnswer(15)
+
         findViewById<Button>(R.id.click).setOnClickListener{ v->
             run{
                 Toast.makeText(this, findViewById<NPSRecyclerView>(R.id.nps_rv).getSelectedAnswer(), Toast.LENGTH_SHORT).show()
