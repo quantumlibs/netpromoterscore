@@ -12,11 +12,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 open class ItemRecyclerAdapter(
-    val context: Context,
+    var context: Context,
     var itemList: List<String>,
     var npsAnswer: Int = -1,
     var shape: Shape
 ) : RecyclerView.Adapter<ViewHolder>() {
+
+ var npsAnswerSelectedListener: NPSRecyclerView.NPSAnswerSelectedListener? = null
+
+
+    constructor(context: Context,
+                itemList: List<String>,
+                npsAnswer: Int = -1,
+                shape: Shape,
+                npsAnswerSelectedListener: NPSRecyclerView.NPSAnswerSelectedListener
+    ) : this(context, itemList, npsAnswer, shape) {
+        this.npsAnswerSelectedListener = npsAnswerSelectedListener
+            }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -37,15 +49,16 @@ open class ItemRecyclerAdapter(
         else
             holder.itemLayout.background = context.resources.getDrawable(R.drawable.item_bg_circle)
 
-        if (position <= npsAnswer) {
+        if (position <= npsAnswer-1) {
             holder.itemText.setTextColor(Color.WHITE)
             holder.itemLayout.getBackground().setColorFilter(Color.parseColor("#04B2AB"), PorterDuff.Mode.SRC_ATOP);
         }
 
         holder.itemLayout.setOnClickListener { v ->
             run {
-                npsAnswer = position
+                npsAnswer = position+1
                 notifyDataSetChanged()
+                npsAnswerSelectedListener?.onAnswerSelected(npsAnswer)
                 holder.itemText.setTextColor(Color.WHITE)
                 holder.itemLayout.getBackground()
                     .setColorFilter(Color.parseColor("#04B2AB"), PorterDuff.Mode.SRC_ATOP);
@@ -54,7 +67,7 @@ open class ItemRecyclerAdapter(
     }
 
     open fun getSelectedAnswer(): Int {
-        return npsAnswer+1
+        return npsAnswer
     }
 }
 

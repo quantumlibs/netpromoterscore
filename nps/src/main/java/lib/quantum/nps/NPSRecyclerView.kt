@@ -48,8 +48,18 @@ class NPSRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(con
         this.layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
         npsAdapter = ItemRecyclerAdapter(context, items, boxItemPosition, shape!!)
         this.adapter = npsAdapter
+
     }
 
+    fun OnSelectAnswerListner(npsAnswerSelectedListener: NPSAnswerSelectedListener){
+        npsAdapter.npsAnswerSelectedListener = npsAnswerSelectedListener
+        npsAdapter = ItemRecyclerAdapter(context, items, boxItemPosition, shape!!, npsAnswerSelectedListener)
+        this.adapter = npsAdapter
+    }
+
+    interface NPSAnswerSelectedListener {
+        fun onAnswerSelected(npsAnswer: Int)
+    }
 
 }
 

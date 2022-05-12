@@ -1,4 +1,4 @@
-package lib.quantum.nps
+package com.quantum.nps
 
 import org.junit.Test
 

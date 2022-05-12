@@ -1,4 +1,4 @@
-package lib.quantum.nps
+package com.quantum.nps
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
