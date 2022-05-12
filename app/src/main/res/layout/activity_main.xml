@@ -18,13 +18,13 @@
 
     <lib.quantum.nps.NPSRecyclerView
         android:id="@+id/nps_rv"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         app:shape="square"
-        app:count="20"
+        app:count="10"
         tools:ignore="MissingConstraints" />
 
     <Button

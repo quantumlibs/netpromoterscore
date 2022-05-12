@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         val context: Context = this
         val npsRV = findViewById<NPSRecyclerView>(R.id.nps_rv)
-        npsRV.setSelectedAnswer(15)
+        npsRV.setSelectedAnswer(1)
         npsRV.OnSelectAnswerListner(object : NPSRecyclerView.NPSAnswerSelectedListener {
             override fun onAnswerSelected(npsAnswer: Int) {
                 Toast.makeText(context, ""+npsAnswer, Toast.LENGTH_SHORT).show()

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 open class ItemRecyclerAdapter(
     var context: Context,
     var itemList: List<String>,
-    var npsAnswer: Int = -1,
+    var answerPosition: Int = -1,
     var shape: Shape
 ) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -49,16 +49,16 @@ open class ItemRecyclerAdapter(
         else
             holder.itemLayout.background = context.resources.getDrawable(R.drawable.item_bg_circle)
 
-        if (position <= npsAnswer-1) {
+        if (position <= answerPosition) {
             holder.itemText.setTextColor(Color.WHITE)
             holder.itemLayout.getBackground().setColorFilter(Color.parseColor("#04B2AB"), PorterDuff.Mode.SRC_ATOP);
         }
 
         holder.itemLayout.setOnClickListener { v ->
             run {
-                npsAnswer = position+1
+                answerPosition = position
                 notifyDataSetChanged()
-                npsAnswerSelectedListener?.onAnswerSelected(npsAnswer)
+                npsAnswerSelectedListener?.onAnswerSelected(answerPosition+1)
                 holder.itemText.setTextColor(Color.WHITE)
                 holder.itemLayout.getBackground()
                     .setColorFilter(Color.parseColor("#04B2AB"), PorterDuff.Mode.SRC_ATOP);
@@ -67,7 +67,7 @@ open class ItemRecyclerAdapter(
     }
 
     open fun getSelectedAnswer(): Int {
-        return npsAnswer
+        return answerPosition+1
     }
 }
 
