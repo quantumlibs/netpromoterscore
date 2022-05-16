@@ -50,6 +50,7 @@ open class ItemRecyclerAdapter(
             holder.itemLayout.background = context.resources.getDrawable(R.drawable.item_bg_circle)
 
         if (position <= answerPosition) {
+            Log.d("NPS>>>>>"+position+"..."+answerPosition, shape.name)
             holder.itemText.setTextColor(Color.WHITE)
             holder.itemLayout.getBackground().setColorFilter(Color.parseColor("#04B2AB"), PorterDuff.Mode.SRC_ATOP);
         }
